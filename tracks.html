@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tracks - Kubernetes Command Craft</title>
+  <link rel="stylesheet" href="styles/main.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <script src="js/main.js" defer></script>
+  <script src="js/tracks.js" defer></script>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar">
+    <div class="container">
+      <div class="navbar-brand">
+        <a href="index.html" class="logo">
+          <span class="text-green-400">K8S</span>_CRAFT
+        </a>
+      </div>
+      <div class="navbar-menu" id="main-nav">
+        <ul class="navbar-links">
+          <li><a href="index.html" class="nav-link">Home</a></li>
+          <li><a href="tracks.html" class="nav-link active">Tracks</a></li>
+          <li><a href="about.html" class="nav-link">About</a></li>
+        </ul>
+        <div class="navbar-auth">
+          <a href="login.html" class="argo-button-outline">Login</a>
+          <a href="signup.html" class="argo-button-primary">Sign Up</a>
+        </div>
+      </div>
+      <button class="navbar-toggle" id="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Tracks Header -->
+  <section class="page-header">
+    <div class="container">
+      <div class="section-title center">
+        <span class="terminal-icon"></span>
+        <h1 class="text-argo-purple">TRACKS<span class="cursor-blink">_</span></h1>
+      </div>
+      <div class="terminal-box wide-box">
+        <p class="terminal-text">
+          > SELECT track FROM kubernetes_skills WHERE expertise_level = 'advanced'
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tracks Grid -->
+  <section class="tracks-section">
+    <div class="container">
+      <div class="loader" id="tracks-loader">
+        <div class="loader-ping"></div>
+      </div>
+      
+      <div class="tracks-grid" id="tracks-grid">
+        <!-- Track cards will be populated by JavaScript -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <div class="footer-logo">
+            <span class="text-green-400">K8S</span>_CRAFT
+          </div>
+          <p class="footer-tagline">Master Kubernetes through practical challenges</p>
+        </div>
+        <div class="footer-links">
+          <div class="footer-links-column">
+            <h3>Navigation</h3>
+            <ul>
+              <li><a href="index.html">Home</a></li>
+              <li><a href="tracks.html">Tracks</a></li>
+              <li><a href="about.html">About</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-column">
+            <h3>Account</h3>
+            <ul>
+              <li><a href="login.html">Login</a></li>
+              <li><a href="signup.html">Sign Up</a></li>
+              <li><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-column">
+            <h3>Resources</h3>
+            <ul>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Support</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2025 Kubernetes Command Craft. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
