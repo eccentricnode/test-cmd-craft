@@ -11,16 +11,18 @@ class FooterComponent extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = `
+      <script src="main.css"></script>
+      <script src="common.css"></script>
+      
       <style>
         /* Footer Styles */
         .footer {
           background-color: var(--card, #1a1b26);
-          border-top: 1px solid var(--border, #2a2b36);
           padding: 3rem 0 1.5rem;
         }
 
         .container {
-          max-width: 1200px;
+          max-width: 1280px;
           margin: 0 auto;
           padding: 0 1rem;
         }
@@ -29,10 +31,15 @@ class FooterComponent extends HTMLElement {
           display: flex;
           flex-direction: column;
           gap: 2rem;
+          padding-top: 2rem;
           margin-bottom: 2rem;
+          border-top: 1px solid var(--border, #2e3440);
         }
 
         .footer-brand {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
           max-width: 16rem;
         }
 
@@ -43,11 +50,11 @@ class FooterComponent extends HTMLElement {
         }
 
         .text-green-400 {
-          color: #4ade80;
+          color: var(--green-400);
         }
 
         .footer-tagline {
-          color: var(--gray-400, #94a3b8);
+          color: var(--gray-400);
           font-size: 0.875rem;
         }
 
@@ -60,7 +67,7 @@ class FooterComponent extends HTMLElement {
         .footer-links-column h3 {
           font-size: 1rem;
           margin-bottom: 1rem;
-          color: var(--foreground, #e2e8f0);
+          color: var(--foreground);
         }
 
         .footer-links-column ul {
@@ -74,20 +81,21 @@ class FooterComponent extends HTMLElement {
         }
 
         .footer-links-column a {
-          color: var(--gray-400, #94a3b8);
+          color: var(--gray-400);
           font-size: 0.875rem;
           text-decoration: none;
+          transition: color 0.3s ease;
         }
 
         .footer-links-column a:hover {
-          color: var(--green-400, #4ade80);
+          color: var(--green-400);
         }
 
         .footer-bottom {
-          border-top: 1px solid var(--border, #2a2b36);
+          border-top: 1px solid var(--border);
           padding-top: 1.5rem;
           text-align: center;
-          color: var(--gray-400, #94a3b8);
+          color: var(--gray-400);
           font-size: 0.875rem;
         }
 
@@ -147,8 +155,8 @@ class FooterComponent extends HTMLElement {
             <p>&copy; 2025 Kubernetes Command Craft. All rights reserved.</p>
           </div>
         </div>
-
-          `;
+      </footer>
+    `;
   }
 }
 
