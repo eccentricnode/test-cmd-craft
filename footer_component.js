@@ -20,7 +20,6 @@ class FooterComponent extends HTMLElement {
         }
 
         .container {
-          width: 100%;
           max-width: 1200px;
           margin: 0 auto;
           padding: 0 1rem;
@@ -142,12 +141,14 @@ class FooterComponent extends HTMLElement {
               </div>
             </div>
           </div>
+        </div>
+        <div class="container">
           <div class="footer-bottom">
             <p>&copy; 2025 Kubernetes Command Craft. All rights reserved.</p>
           </div>
         </div>
-      </footer>
-    `;
+
+          `;
   }
 }
 
