@@ -2,6 +2,7 @@
 class NavbarComponent extends HTMLElement {
   constructor() {
     super();
+    // Use open mode to allow external styles to affect the component
     this.attachShadow({ mode: 'open' });
   }
 
@@ -12,10 +13,12 @@ class NavbarComponent extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = `
+      <!-- Include shared styles -->
       <link rel="stylesheet" href="styles/main.css">
       <link rel="stylesheet" href="styles/common.css">
+      
       <style>
-        /* Navbar styles */
+        /* Navbar-specific styles only */
         .navbar {
           background-color: rgba(12, 12, 14, 0.9);
           padding: 1rem 0;
@@ -39,14 +42,14 @@ class NavbarComponent extends HTMLElement {
 
         .logo {
           font-family: 'Courier New', monospace;
-          color: var(--foreground, #e2e8f0);
+          color: var(--foreground);
           font-weight: bold;
           letter-spacing: 1px;
           text-decoration: none;
         }
 
         .text-green-400 {
-          color: #4ade80;
+          color: var(--green-400);
         }
 
         .navbar-menu {
@@ -67,7 +70,7 @@ class NavbarComponent extends HTMLElement {
         }
 
         .nav-link {
-          color: var(--foreground, #e2e8f0);
+          color: var(--foreground);
           position: relative;
           text-decoration: none;
         }
@@ -79,7 +82,7 @@ class NavbarComponent extends HTMLElement {
           left: 0;
           width: 0;
           height: 2px;
-          background-color: #4ade80;
+          background-color: var(--green-400);
           transition: width 0.3s ease;
         }
 
@@ -108,7 +111,7 @@ class NavbarComponent extends HTMLElement {
           display: block;
           width: 100%;
           height: 2px;
-          background-color: var(--foreground, #e2e8f0);
+          background-color: var(--foreground);
           position: absolute;
           transition: all 0.3s ease;
         }
@@ -134,9 +137,9 @@ class NavbarComponent extends HTMLElement {
             left: 0;
             right: 0;
             flex-direction: column;
-            background-color: var(--background, #0c0c0e);
+            background-color: var(--background);
             padding: 1.5rem;
-            border-bottom: 1px solid var(--border, #2a2b36);
+            border-bottom: 1px solid var(--border);
             transform: translateY(-100%);
             opacity: 0;
             transition: transform 0.3s ease, opacity 0.3s ease;

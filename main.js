@@ -1,16 +1,6 @@
 
 document.addEventListener('DOMContentLoaded', function() {
-  // Mobile navigation toggle
-  const navToggle = document.getElementById('nav-toggle');
-  const navMenu = document.getElementById('main-nav');
-
-  if (navToggle && navMenu) {
-    navToggle.addEventListener('click', function() {
-      navToggle.classList.toggle('active');
-      navMenu.classList.toggle('active');
-    });
-  }
-
+  
   // Mobile menu toggle
   const menuToggle = document.getElementById('menuToggle');
   const mobileMenu = document.getElementById('mobileMenu');
