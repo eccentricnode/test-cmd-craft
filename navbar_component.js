@@ -4,11 +4,27 @@ class NavbarComponent extends HTMLElement {
     super();
     // Use open mode to allow external styles to affect the component
     this.attachShadow({ mode: 'open' });
+    
+    // Bind methods to preserve 'this' context and allow for proper event removal
+    this.handleViewportChange = this.handleViewportChange.bind(this);
+    this.handleToggleClick = this.handleToggleClick.bind(this);
   }
 
   connectedCallback() {
     this.render();
     this.setupEventListeners();
+    this.highlightCurrentPage();
+  }
+  
+  disconnectedCallback() {
+    // Clean up event listeners to prevent memory leaks
+    window.removeEventListener('resize', this.handleViewportChange);
+    window.removeEventListener('orientationchange', this.handleViewportChange);
+    
+    // Clean up the toggle click handler if it exists
+    if (this.navToggle) {
+      this.navToggle.removeEventListener('click', this.handleToggleClick);
+    }
   }
 
   render() {
@@ -105,6 +121,9 @@ class NavbarComponent extends HTMLElement {
           width: 2rem;
           height: 1.5rem;
           position: relative;
+          z-index: 110; /* Ensure toggle is above other elements */
+          margin-left: 1rem; /* Add some spacing */
+          padding: 0.5rem; /* Increase touch target size */
         }
 
         .navbar-toggle span {
@@ -142,7 +161,7 @@ class NavbarComponent extends HTMLElement {
             border-bottom: 1px solid var(--border);
             transform: translateY(-100%);
             opacity: 0;
-            transition: transform 0.3s ease, opacity 0.3s ease;
+            transition: transform 0.3s ease, opacity 0.3s ease, max-height 0.3s ease;
             z-index: 90;
           }
           
@@ -181,6 +200,14 @@ class NavbarComponent extends HTMLElement {
             transform: rotate(-45deg) translate(5px, -7px);
           }
         }
+        
+        /* Handle landscape orientation on mobile */
+        @media (orientation: landscape) and (max-width: 768px) {
+          .navbar-menu {
+            max-height: 80vh;
+            overflow-y: auto;
+          }
+        }
       </style>
 
       <nav class="navbar">
@@ -201,7 +228,7 @@ class NavbarComponent extends HTMLElement {
                 <a href="signup.html" class="argo-button-primary">Sign Up</a>
             </div>
           </div>
-          <button class="navbar-toggle" id="nav-toggle">
+          <button class="navbar-toggle" id="nav-toggle" aria-label="Toggle navigation">
             <span></span>
             <span></span>
             <span></span>
@@ -217,11 +244,53 @@ class NavbarComponent extends HTMLElement {
     const navMenu = this.shadowRoot.getElementById('main-nav');
 
     if (navToggle && navMenu) {
-      navToggle.addEventListener('click', function() {
-        navToggle.classList.toggle('active');
-        navMenu.classList.toggle('active');
-      });
+      // Store references to DOM elements as instance properties
+      this.navToggle = navToggle;
+      this.navMenu = navMenu;
+      
+      // Use the bound method as event handler
+      navToggle.addEventListener('click', this.handleToggleClick);
     }
+
+    // Handle orientation and resize events
+    window.addEventListener('resize', this.handleViewportChange);
+    window.addEventListener('orientationchange', this.handleViewportChange);
+  }
+  
+  handleToggleClick() {
+    // These references use the instance properties
+    this.navToggle.classList.toggle('active');
+    this.navMenu.classList.toggle('active');
+  }
+
+  handleViewportChange() {
+    // Check if we're on desktop view
+    if (window.innerWidth > 768) {
+      // Reset mobile menu when switching to desktop
+      this.navMenu.classList.remove('active');
+      this.navToggle.classList.remove('active');
+    }
+    
+    // For accessibility - keep menu visible during transitions if it was open
+    if (window.innerWidth <= 768 && this.navMenu.classList.contains('active')) {
+      this.navMenu.style.opacity = '1';
+      this.navMenu.style.transform = 'translateY(0)';
+    }
+  }
+
+  highlightCurrentPage() {
+    // Get current page path
+    const currentPath = window.location.pathname;
+    const filename = currentPath.split('/').pop() || 'index.html';
+    
+    // Find the matching link in shadow DOM and add active class
+    const links = this.shadowRoot.querySelectorAll('.nav-link');
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (href === filename) {
+        link.classList.add('active');
+      }
+    });
   }
 }
 
