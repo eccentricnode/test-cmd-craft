@@ -12,6 +12,10 @@ class SignupFormComponent extends HTMLElement {
 
   render() {
     this.shadowRoot.innerHTML = `
+      <!-- Include shared styles -->
+      <link rel="stylesheet" href="styles/main.css">
+      <link rel="stylesheet" href="styles/common.css">
+      
       <style>
         /* Auth form styles */
         .auth-section {
