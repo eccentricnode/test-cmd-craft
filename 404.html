@@ -4,12 +4,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Login - Kubernetes Command Craft</title>
+  <title>404 - Page Not Found - Kubernetes Command Craft</title>
   <link rel="stylesheet" href="styles/main.css">
   <link rel="stylesheet" href="styles/components.css">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
-  <script src="js/main.js" defer></script>
-  <script src="js/auth.js" defer></script>
+  <script src="main.js" defer></script>
+  <script src="not-found.js" defer></script>
 </head>
 <body>
   <!-- Navigation -->
@@ -26,6 +26,10 @@
           <li><a href="tracks.html" class="nav-link">Tracks</a></li>
           <li><a href="about.html" class="nav-link">About</a></li>
         </ul>
+        <div class="navbar-auth">
+          <a href="login.html" class="argo-button-outline">Login</a>
+          <a href="signup.html" class="argo-button-primary">Sign Up</a>
+        </div>
       </div>
       <button class="navbar-toggle" id="nav-toggle">
         <span></span>
@@ -35,36 +39,44 @@
     </div>
   </nav>
 
-  <!-- Login Section -->
-  <section class="auth-section">
+  <!-- 404 Content Section -->
+  <section class="page-header">
     <div class="container">
-      <div class="auth-card">
-        <div class="auth-header">
-          <h1 class="auth-title">Log in</h1>
-          <p class="auth-description">Enter your email and password to access your account</p>
-        </div>
-        <form id="login-form" class="auth-form">
-          <div class="form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required>
-          </div>
-          <div class="form-group">
-            <div class="form-group-header">
-              <label for="password">Password</label>
-              <a href="#" class="form-link">Forgot password?</a>
-            </div>
-            <input type="password" id="password" name="password" required>
-          </div>
-          <div id="auth-error" class="auth-error"></div>
-          <button type="submit" class="auth-submit-button">
-            <span id="login-button-text">Log in</span>
-            <span id="login-loader" class="auth-loader hidden"></span>
-          </button>
-          <p class="auth-alt-action">
-            Don't have an account? <a href="signup.html" class="form-link">Sign up</a>
-          </p>
-        </form>
+      <div class="section-title center">
+        <span class="terminal-icon">$</span>
+        <h1>ERROR::<span class="text-argo-purple">404</span></h1>
       </div>
+      <div class="terminal-box wide-box">
+        <p class="terminal-text">
+          > kubectl get page
+        </p>
+        <p class="terminal-text">
+          Error: resources "page" not found in the cluster
+        </p>
+        <p class="terminal-text">
+          > The resource you are looking for might have been removed, had its name changed, 
+          or is temporarily unavailable.
+        </p>
+        <p class="terminal-text blink-cursor">
+          > _
+        </p>
+      </div>
+      
+      <div class="section-title center">
+        <div class="not-found-action">
+            <a href="index.html" class="argo-button-primary">
+                <span class="code-icon"></span> cd /home
+            </a>
+        </div>
+      </div>
+      </div>
+    </div>
+    
+  </section>
+
+  <!-- Error Details Section -->
+  <section class="features">
+    <div class="container">
     </div>
   </section>
 
@@ -98,9 +110,9 @@
           <div class="footer-links-column">
             <h3>Resources</h3>
             <ul>
-              <li><a href="404.html">Documentation</a></li>
-              <li><a href="404.html">Blog</a></li>
-              <li><a href="404.html">Support</a></li>
+              <li><a href="#">Documentation</a></li>
+              <li><a href="#">Blog</a></li>
+              <li><a href="#">Support</a></li>
             </ul>
           </div>
         </div>

@@ -622,6 +622,23 @@
   font-size: 0.875rem;
 }
 
+/* 404 Page specific styles */
+.not-found-action {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.blink-cursor::after {
+  content: "_";
+  animation: cursor-blink 0.8s infinite;
+}
+
+@keyframes cursor-blink {
+  0%, 100% { opacity: 0; }
+  50% { opacity: 1; }
+}
+
 /* Responsive styles */
 @media (min-width: 640px) {
   .hero-buttons {
