@@ -208,6 +208,7 @@ class NavbarComponent extends HTMLElement {
             overflow-y: auto;
           }
         }
+        
       </style>
 
       <nav class="navbar">
